@@ -10,10 +10,7 @@ from glob import glob
 
 from collections import defaultdict
 
-# base_dir = "../data_split"
-# save_dir = "../data_coco"
-
-base_path = "../data/data_splited"
+base_path = "../data"
 
 def convert_to_coco(
     json_paths,
@@ -24,8 +21,7 @@ def convert_to_coco(
         only for train dataset
     """
     res = defaultdict(list)
-    # 제거
-    # json_paths = glob(os.path.join(root_path, 'train', '*.json'))
+    
     categories = {
         '01_ulcer': 1,
         '02_mass': 2,
@@ -90,7 +86,7 @@ convert_to_coco(train_file, os.path.join(base_path, 'train_annotations.json'), o
 convert_to_coco(valid_file, os.path.join(base_path, 'valid_annotations.json'), os.path.join(base_path, "valid_images"))
 
 
-
+# 테스트 데이터
 test_path = '../data/test'
 
 test_files = sorted(glob(os.path.join(test_path, '*')))
