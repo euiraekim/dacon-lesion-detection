@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = '../data_coco/'
+data_root = '../data/'
 classes = ('01_ulcer', '02_mass', '04_lymph', '05_bleeding')
 
 img_norm_cfg = dict(
@@ -36,19 +36,19 @@ data = dict(
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'train_annotations.json',
-        img_prefix=data_root + 'train',
+        img_prefix=data_root + 'train_images',
         classes = classes,
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         ann_file=data_root + 'valid_annotations.json',
-        img_prefix=data_root + 'valid',
+        img_prefix=data_root + 'valid_images',
         classes = classes,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         ann_file=data_root + 'valid_annotations.json',
-        img_prefix=data_root + 'valid',
+        img_prefix=data_root + 'valid_images',
         classes = classes,
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='bbox')
