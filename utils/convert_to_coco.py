@@ -10,7 +10,8 @@ from glob import glob
 
 from collections import defaultdict
 
-base_path = "../data"
+base_path = "../data/data_splited"
+target_path = '../data/data_splited/data_coco'
 
 def convert_to_coco(
     json_paths,
@@ -82,8 +83,8 @@ random.seed(42)
 train_file = glob(os.path.join(base_path, 'train/*.json'))
 valid_file = glob(os.path.join(base_path, 'valid/*.json'))
 
-convert_to_coco(train_file, os.path.join(base_path, 'train_annotations.json'), os.path.join(base_path, "train_images"))
-convert_to_coco(valid_file, os.path.join(base_path, 'valid_annotations.json'), os.path.join(base_path, "valid_images"))
+convert_to_coco(train_file, os.path.join(target_path, 'train_annotations.json'), os.path.join(target_path, "train_images"))
+convert_to_coco(valid_file, os.path.join(target_path, 'valid_annotations.json'), os.path.join(target_path, "valid_images"))
 
 
 # 테스트 데이터
@@ -96,7 +97,7 @@ for file in tqdm(test_files):
     with open(file, "r") as json_file:
         test_json_list.append(json.load(json_file))
         
-image_path = os.path.join(base_path, "test_images")
+image_path = os.path.join(target_path, "test_images")
 if not os.path.exists(image_path):
     os.makedirs(image_path)
 
@@ -106,4 +107,4 @@ for sample in tqdm(test_json_list):
     image = BytesIO(base64.b64decode(sample['imageData']))
     image = Image.open(image).convert('RGB')
     
-    image.save(os.path.join(base_path, "test_images", image_id+".jpg"))
+    image.save(os.path.join(target_path, "test_images", image_id+".jpg"))
