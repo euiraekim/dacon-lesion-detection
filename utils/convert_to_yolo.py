@@ -118,8 +118,8 @@ tmp = Parallel(n_jobs=mp.cpu_count(),prefer="threads")(delayed(save_image_label)
 
 #yaml 파일 생성
 data_yaml = dict(
-    train = ['./images/train'],
-    val = ['./images/valid'],
+    train = ['../../data/data_yolo/images/train'],
+    val = ['../../data/data_yolo/images/valid'],
     nc = 4,
     names = ['01_ulcer','02_mass','04_lymph','05_bleeding']
 )
