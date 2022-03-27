@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = '../data/'  # dataset path
+data_root = '../data/data_splited/data_coco'  # dataset path
 
 classes = ('01_ulcer', '02_mass', '04_lymph', '05_bleeding')
 
