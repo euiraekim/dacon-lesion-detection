@@ -17,7 +17,7 @@ def xywh2xyxy(x):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-data', '--data', default='../yolo/yolov5/runs/detect/exp',dest='data')
-parser.add_argument('-save', '--save', default='../result_csv/submission_yolov5.csv',dest='savepath')
+parser.add_argument('-save', '--save', default='../result_csv/submission_yolov5.csv',dest='save')
 options = parser.parse_args()
 
 result_path = options.data
