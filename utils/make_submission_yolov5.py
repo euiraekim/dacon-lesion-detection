@@ -56,7 +56,8 @@ for i in tqdm(result_label):
                 results['point4_y'].append(y_max)
             
 df = pd.DataFrame(results)
-df['class_id'] = df['class_id'].apply(lambda x:int(x)+1)
+# yolo 결과 class_id가 0~3으로 저장된다. (원래는 1~4임) 그래서 1씩 더해줌
+df['class_id'] = df['class_id'].apply(lambda x:int(x) + 1)
 
 df = df.sort_values(by=['confidence'], axis=0, ascending=False)
 df[:30000].to_csv(options.save, index=False)
